@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.10.2)
+
+project(fftw3-download NONE)
+
+include(ExternalProject)
+
+ExternalProject_Add(
+   fftw3base
+   URL "http://www.fftw.org/fftw-3.3.8.tar.gz"
+   URL_MD5 "8aac833c943d8e90d51b697b27d4384d"
+   SOURCE_DIR "${CMAKE_BINARY_DIR}/fftw3-src"
+   BINARY_DIR "${CMAKE_BINARY_DIR}/fftw3-build"
+   CONFIGURE_COMMAND ""
+   BUILD_COMMAND ""
+   INSTALL_COMMAND ""
+   TEST_COMMAND ""
+   PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.fftw3
+        ${CMAKE_BINARY_DIR}/fftw3-src/CMakeLists.txt
+)
